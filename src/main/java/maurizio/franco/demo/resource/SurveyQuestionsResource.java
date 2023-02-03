@@ -33,7 +33,7 @@ public class SurveyQuestionsResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<EntityInterface> getItems() {
-		logger.info("getUsers - START");
+		logger.info("SurveyQuestionsResource - getItems - START");
 		List<EntityInterface> listEntity = SurveyquestionsService.getInstance().getAllSurveyquestions();
 		return listEntity;
 	}
@@ -42,7 +42,7 @@ public class SurveyQuestionsResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}/")
 	public SurveysQuestions getItem(@PathParam("id") int id) {
-		logger.info("getObjectById - START - id: " + id);
+		logger.info("SurveyQuestionsResource - getItem - START - id: " + id);
 		SurveysQuestions surveyQuestions = SurveyquestionsService.getInstance().selectById(id);
 		return surveyQuestions;
 	}
@@ -51,7 +51,7 @@ public class SurveyQuestionsResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public SurveysQuestions insertItem(SurveysQuestions surveyQuestions) {
-		logger.info("insertUser - START - object to insert: " + surveyQuestions);
+		logger.info("SurveyQuestionsResource - insertItem - START - object to insert: " + surveyQuestions);
 		SurveyquestionsService.getInstance().insert(surveyQuestions);
 		return surveyQuestions ;
 	}
@@ -60,7 +60,7 @@ public class SurveyQuestionsResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public SurveysQuestions updateItem(SurveysQuestions surveyQuestions) {
-		logger.info("updateUser - START - object to update: " + surveyQuestions);
+		logger.info("SurveyQuestionsResource - updateItem - START - object to update: " + surveyQuestions);
 		SurveyquestionsService.getInstance().updateSurveyquestions(surveyQuestions);
 		return surveyQuestions ;
 	}
@@ -70,7 +70,7 @@ public class SurveyQuestionsResource {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("{id}/")
 	public boolean deleteItem(@PathParam("id") int id) {
-		logger.info("deleteUser - START - id user to remove: " + id);
+		logger.info("SurveyQuestionsResource - deleteItem - START - id user to remove: " + id);
 		SurveyquestionsService.getInstance().deleteById(id);
 		return true;
 	}
