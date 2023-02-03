@@ -63,8 +63,8 @@ public class CandidatesResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Candidates insertItem(Candidates itemToInsert) {
-		boolean r = CandidatesService.getInstance().insertCandidates(itemToInsert);
-		if(r)
+		boolean bool = CandidatesService.getInstance().insertCandidates(itemToInsert);
+		if(bool)
 			return itemToInsert;
 		return null;
 	}
@@ -74,8 +74,8 @@ public class CandidatesResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Candidates updateItem(Candidates itemToUpdate) {
-		boolean r = CandidatesService.getInstance().updateCandidates(itemToUpdate);
-		if(r)
+		boolean bool = CandidatesService.getInstance().updateCandidates(itemToUpdate);
+		if(bool)
 			return itemToUpdate;
 		return null;
 	}
@@ -87,7 +87,7 @@ public class CandidatesResource {
 	@Path("{id}/")
 	public boolean deleteItem(@PathParam("id") Long id) {
 		logger.info("deleteUser - START - id user to remove: " + id);
-		boolean r = CandidatesService.getInstance().deleteById(id);
-		return r;
+		boolean bool = CandidatesService.getInstance().deleteById(id);
+		return bool;
 	}
 }
