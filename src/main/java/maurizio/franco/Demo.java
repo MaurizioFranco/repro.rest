@@ -19,7 +19,7 @@ public class Demo {
 	/**
 	 * Default URI where Grizzly HTTP server will listen on
 	 */
-    public static final String BASE_URI = "http://localhost:8080/demo/";
+    public static final String BASE_URI = "http://localhost:9000/repro.rest/";
 
     /**
      * Starts Grizzly HTTP server exposing JAX-RS resources defined in this application.
@@ -28,11 +28,11 @@ public class Demo {
     public static HttpServer startServer() {
         // create a resource config that scans for JAX-RS resources and providers
         // in maurizio.franco package
-        final ResourceConfig rc = new ResourceConfig().packages("maurizio.franco.demo.resource");
-
+        final ResourceConfig resourceConfig = new ResourceConfig().packages("maurizio.franco.demo.resource");
+        resourceConfig.register(new CORSFilter());
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI
-        return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
+        return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), resourceConfig);
     }
 
     /**
