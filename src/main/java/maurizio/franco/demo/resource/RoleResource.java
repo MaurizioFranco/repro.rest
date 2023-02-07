@@ -61,9 +61,9 @@ public class RoleResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Roles insert(Roles item) {
 		logger.info("insert - START - object to insert: " + item);
-		//TO DO: something on the persistence layer
-//		user.setId(105l);
-		return new Roles () ;
+		Roles insertedItem = RoleService.getInstance().insert(item);
+		logger.info("insert - END - insertedItem: " + insertedItem);
+		return insertedItem ;
 	}
 
 	
