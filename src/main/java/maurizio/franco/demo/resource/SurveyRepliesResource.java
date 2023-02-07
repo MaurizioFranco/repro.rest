@@ -1,8 +1,5 @@
 package maurizio.franco.demo.resource;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -19,10 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import centauri.academy.proxima.cerepro.entity.EntityInterface;
-import centauri.academy.proxima.cerepro.entity.Roles;
 import centauri.academy.proxima.cerepro.entity.SurveysReplies;
-import maurizio.franco.demo.bean.User;
-import proxima.informatica.academy.seventh.service.RoleService;
 import proxima.informatica.academy.seventh.service.SurveyRepliesService;
 
 /**

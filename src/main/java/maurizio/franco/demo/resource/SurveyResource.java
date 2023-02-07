@@ -82,11 +82,11 @@ public class SurveyResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Surveys insertSurvey(Surveys survey) {
-		logger.info("insertSurvey - START - object to insert: " + survey);
-		SurveyService.getInstance().insert(survey);
-		logger.info("insertSurvey - END");
-		return survey;
+	public Surveys insert(Surveys item) {
+		logger.info("insert - START - object to insert: " + item);
+		Surveys insertedItem = SurveyService.getInstance().insert(item);
+		logger.info("insert - END - insertedItem: " + insertedItem);
+		return insertedItem ;
 	}
 	
 	/**
@@ -96,18 +96,15 @@ public class SurveyResource {
 	 * try from command line with: PUT http://localhost:8080/demo/survey?{"id":"...", "label":"...", "time":"...", "description":"..."}
 	 *
 	 * @return Surveys
-	 */
+	 */	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Surveys updateSurvey(Surveys survey) {
-		logger.info("updateSurvey - START - object to update: " + survey);
-		Surveys updatedSurvey = null;
-		if (SurveyService.getInstance().updateSurvey(survey)) {
-			updatedSurvey = SurveyService.getInstance().selectById(survey.getId());
-		}
-		logger.info("updateSurvey - END");
-		return updatedSurvey;
+	public Surveys update(Surveys item) {
+		logger.info("update - START - object to update: " + item);
+		Surveys updatedItem = SurveyService.getInstance().update(item);
+		logger.info("update - END - updatedItem: " + updatedItem);
+		return updatedItem ;
 	}
 	
 	/**
@@ -122,11 +119,11 @@ public class SurveyResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("{id}/")
-	public Surveys deleteUser(@PathParam("id") Long id) {
-		logger.info("deleteSurvey - START - id survey to remove: " + id);
+	public Surveys delete(@PathParam("id") Long id) {
+		logger.info("delete - START - id survey to remove: " + id);
 		Surveys survey = SurveyService.getInstance().selectById(id);
 		SurveyService.getInstance().deleteById(id);
-		logger.info("deleteSurvey - END");
+		logger.info("delete - END");
 		return survey;		
 	}
 	
