@@ -19,8 +19,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import centauri.academy.proxima.cerepro.entity.EntityInterface;
+import centauri.academy.proxima.cerepro.entity.Roles;
 import centauri.academy.proxima.cerepro.entity.SurveysReplies;
 import maurizio.franco.demo.bean.User;
+import proxima.informatica.academy.seventh.service.RoleService;
 import proxima.informatica.academy.seventh.service.SurveyRepliesService;
 
 /**
@@ -54,11 +56,11 @@ public class SurveyRepliesResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public EntityInterface insertSurveyReplies(SurveysReplies surveyReplies) {
-		logger.info("insertSurveyReplies - START - object to insert: " + surveyReplies);
-		SurveyRepliesService.getInstance().insertSurveyreplies(surveyReplies);
-		logger.info("insertSurveyReplies - END - object to insert: " + surveyReplies);
-		return surveyReplies ;
+	public EntityInterface insertSurveyReplies(SurveysReplies item) {
+		logger.info("insertSurveyReplies - START - object to insert: " + item);
+		SurveysReplies insertedItem = SurveyRepliesService.getInstance().insert(item);
+		logger.info("insertSurveyReplies - END - object to insert: " + item);
+		return insertedItem ;
 	}
 
 	@PUT
