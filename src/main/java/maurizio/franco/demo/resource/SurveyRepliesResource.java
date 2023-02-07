@@ -74,7 +74,7 @@ public class SurveyRepliesResource {
 	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}/")
 	public boolean deleteSurveyReplies(@PathParam("id") Long id) {
 		logger.info("deleteSurveyReplies - START - id user to remove: " + id);
