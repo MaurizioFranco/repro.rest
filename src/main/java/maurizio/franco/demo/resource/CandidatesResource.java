@@ -21,7 +21,9 @@ import proxima.informatica.academy.seventh.service.CandidatesService;
 
 
 /**
- * Root resource (exposed at "user" path)
+ * 
+ * @author AntoIannaccone
+ *
  */
 @Path("candidates")
 public class CandidatesResource {
