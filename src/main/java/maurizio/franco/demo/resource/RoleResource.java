@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -15,7 +16,6 @@ import org.slf4j.LoggerFactory;
 
 import centauri.academy.proxima.cerepro.entity.EntityInterface;
 import centauri.academy.proxima.cerepro.entity.Roles;
-import maurizio.franco.demo.bean.User;
 import proxima.informatica.academy.seventh.service.RoleService;
 
 /**
@@ -64,6 +64,16 @@ public class RoleResource {
 		Roles insertedItem = RoleService.getInstance().insert(item);
 		logger.info("insert - END - insertedItem: " + insertedItem);
 		return insertedItem ;
+	}
+	
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Roles update(Roles item) {
+		logger.info("update - START - object to update: " + item);
+		Roles updatedItem = RoleService.getInstance().update(item);
+		logger.info("update - END - updatedItem: " + updatedItem);
+		return updatedItem ;
 	}
 
 	

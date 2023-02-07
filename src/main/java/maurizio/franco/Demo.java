@@ -30,6 +30,7 @@ public class Demo {
         // in maurizio.franco package
         final ResourceConfig resourceConfig = new ResourceConfig().packages("maurizio.franco.demo.resource");
         resourceConfig.register(new CORSFilter());
+//        resourceConfig.register(new RESTRequestFilter());
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI
         return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), resourceConfig);
