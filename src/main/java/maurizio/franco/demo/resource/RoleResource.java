@@ -20,6 +20,8 @@ import proxima.informatica.academy.seventh.service.RoleService;
 
 /**
  * Root resource (exposed at "user" path)
+ * 
+ * @author maurizio.franco@ymail.com
  */
 @Path("roles")
 public class RoleResource {

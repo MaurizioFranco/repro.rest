@@ -20,6 +20,8 @@ import maurizio.franco.demo.bean.User;
 
 /**
  * Root resource (exposed at "user" path)
+ * 
+ * @author maurizio.franco@ymail.com
  */
 @Path("user")
 public class UserResource {
