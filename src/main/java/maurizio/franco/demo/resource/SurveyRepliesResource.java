@@ -54,16 +54,17 @@ public class SurveyRepliesResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public EntityInterface insertUser(SurveysReplies surveyReplies) {
+	public EntityInterface insertSurveyReplies(SurveysReplies surveyReplies) {
 		logger.info("insertSurveyReplies - START - object to insert: " + surveyReplies);
 		SurveyRepliesService.getInstance().insertSurveyreplies(surveyReplies);
+		logger.info("insertSurveyReplies - END - object to insert: " + surveyReplies);
 		return surveyReplies ;
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public EntityInterface updateUser(SurveysReplies surveyReplies) {
+	public EntityInterface updateSurveyReplies(SurveysReplies surveyReplies) {
 		logger.info("updateSurveyReplies - START - object to update: " + surveyReplies);
 		SurveyRepliesService.getInstance().updateSurveyReplies(surveyReplies);
 		return surveyReplies ;
