@@ -16,10 +16,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import centauri.academy.proxima.cerepro.entity.EntityInterface;
-import centauri.academy.proxima.cerepro.entity.Roles;
+import centauri.academy.proxima.cerepro.entity.Candidates;
 import centauri.academy.proxima.cerepro.entity.Candidates;
 import proxima.informatica.academy.seventh.service.CandidatesService;
-import proxima.informatica.academy.seventh.service.RoleService;
+import proxima.informatica.academy.seventh.service.CandidatesService;
 
 
 /**
@@ -84,16 +84,24 @@ public class CandidatesResource {
 	}
 	
 	
+//	@PUT
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Candidates updateItem(Candidates itemToUpdate) {
+//		boolean bool = CandidatesService.getInstance().updateCandidates(itemToUpdate);
+//		if(bool)
+//			return itemToUpdate;
+//		return null;
+//	}
+	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Candidates updateItem(Candidates itemToUpdate) {
-		boolean bool = CandidatesService.getInstance().updateCandidates(itemToUpdate);
-		if(bool)
-			return itemToUpdate;
-		return null;
+	public Candidates updateItem(Candidates candidates) {
+		logger.info("CandidatesResource - updateItem - START - object to update: " + candidates);
+		CandidatesService.getInstance().update(candidates);
+		return candidates ;
 	}
-	
 	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
