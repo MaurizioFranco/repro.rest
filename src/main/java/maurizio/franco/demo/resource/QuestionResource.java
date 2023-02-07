@@ -21,6 +21,7 @@ import proxima.informatica.academy.seventh.service.QuestionsService;
 
 
 /**
+ * @author DaimCod - daim.kazmi00@gmail.com
  * Root resource (exposed at "user" path)
  */
 @Path("question")
