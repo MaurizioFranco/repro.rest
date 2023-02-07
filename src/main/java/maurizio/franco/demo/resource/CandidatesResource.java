@@ -17,6 +17,8 @@ import org.slf4j.LoggerFactory;
 
 import centauri.academy.proxima.cerepro.entity.EntityInterface;
 import centauri.academy.proxima.cerepro.entity.Candidates;
+import centauri.academy.proxima.cerepro.entity.Candidates;
+import proxima.informatica.academy.seventh.service.CandidatesService;
 import proxima.informatica.academy.seventh.service.CandidatesService;
 
 
@@ -61,27 +63,45 @@ public class CandidatesResource {
 	}
 	
 	
+//	@POST
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Candidates insertItem(Candidates itemToInsert) {
+//		boolean bool = CandidatesService.getInstance().insertCandidates(itemToInsert);
+//		if(bool)
+//			return itemToInsert;
+//		return null;
+//	}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Candidates insertItem(Candidates itemToInsert) {
-		boolean bool = CandidatesService.getInstance().insertCandidates(itemToInsert);
-		if(bool)
-			return itemToInsert;
-		return null;
+	public Candidates insert(Candidates item) {
+		logger.info("insert - START - object to insert: " + item);
+		Candidates insertedItem = CandidatesService.getInstance().insert(item);
+		logger.info("insert - END - insertedItem: " + insertedItem);
+		return insertedItem ;
 	}
 	
+	
+//	@PUT
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Candidates updateItem(Candidates itemToUpdate) {
+//		boolean bool = CandidatesService.getInstance().updateCandidates(itemToUpdate);
+//		if(bool)
+//			return itemToUpdate;
+//		return null;
+//	}
 	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Candidates updateItem(Candidates itemToUpdate) {
-		boolean bool = CandidatesService.getInstance().updateCandidates(itemToUpdate);
-		if(bool)
-			return itemToUpdate;
-		return null;
+	public Candidates updateItem(Candidates candidates) {
+		logger.info("CandidatesResource - updateItem - START - object to update: " + candidates);
+		CandidatesService.getInstance().update(candidates);
+		return candidates ;
 	}
-	
 	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
