@@ -122,10 +122,12 @@ public class SurveyResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("{id}/")
-	public boolean deleteUser(@PathParam("id") Long id) {
+	public Surveys deleteUser(@PathParam("id") Long id) {
 		logger.info("deleteSurvey - START - id survey to remove: " + id);
+		Surveys survey = SurveyService.getInstance().selectById(id);
+		SurveyService.getInstance().deleteById(id);
 		logger.info("deleteSurvey - END");
-		return SurveyService.getInstance().deleteById(id);		
+		return survey;		
 	}
 	
 }
