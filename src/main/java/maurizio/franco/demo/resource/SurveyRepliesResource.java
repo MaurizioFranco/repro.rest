@@ -66,15 +66,16 @@ public class SurveyRepliesResource {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public EntityInterface updateSurveyReplies(SurveysReplies surveyReplies) {
-		logger.info("updateSurveyReplies - START - object to update: " + surveyReplies);
-		SurveyRepliesService.getInstance().updateSurveyReplies(surveyReplies);
-		return surveyReplies ;
+	public EntityInterface updateSurveyReplies(SurveysReplies item) {
+		logger.info("updateSurveyReplies - START - object to update: " + item);
+		SurveysReplies updateItem = SurveyRepliesService.getInstance().update(item);
+		logger.info("updateSurveyReplies - END - object to update: " + item);
+		return updateItem ;
 	}
 	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}/")
 	public boolean deleteSurveyReplies(@PathParam("id") Long id) {
 		logger.info("deleteSurveyReplies - START - id user to remove: " + id);

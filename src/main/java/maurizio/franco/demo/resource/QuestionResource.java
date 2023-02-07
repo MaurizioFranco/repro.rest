@@ -64,10 +64,10 @@ public class QuestionResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Questions insertItem(Questions itemToInsert) {
-		boolean r = QuestionsService.getIstance().insert(itemToInsert);
-		if(r)
-			return itemToInsert;
-		return null;
+		logger.info("insert - START - object to insert: " + itemToInsert);
+		Questions question = QuestionsService.getIstance().insert(itemToInsert);
+		logger.info("insert - END: " + question);
+		return question;
 	}
 	
 	
@@ -75,16 +75,15 @@ public class QuestionResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Questions updateItem(Questions itemToUpdate) {
-		boolean r = QuestionsService.getIstance().updateQuestion(itemToUpdate);
-		if(r)
-			return itemToUpdate;
-		return null;
+		Questions r = null;
+		r = QuestionsService.getIstance().updateQuestion(itemToUpdate);
+		return r;
 	}
 	
 	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}/")
 	public boolean deleteItem(@PathParam("id") Long id) {
 		logger.info("deleteUser - START - id user to remove: " + id);
