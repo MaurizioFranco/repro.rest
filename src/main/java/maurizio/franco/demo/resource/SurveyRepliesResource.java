@@ -66,10 +66,11 @@ public class SurveyRepliesResource {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public EntityInterface updateSurveyReplies(SurveysReplies surveyReplies) {
-		logger.info("updateSurveyReplies - START - object to update: " + surveyReplies);
-		SurveyRepliesService.getInstance().update(surveyReplies);
-		return surveyReplies ;
+	public EntityInterface updateSurveyReplies(SurveysReplies item) {
+		logger.info("updateSurveyReplies - START - object to update: " + item);
+		SurveysReplies updateItem = SurveyRepliesService.getInstance().update(item);
+		logger.info("updateSurveyReplies - END - object to update: " + item);
+		return updateItem ;
 	}
 	
 	@DELETE
