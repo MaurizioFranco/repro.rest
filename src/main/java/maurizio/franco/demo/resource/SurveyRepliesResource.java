@@ -24,7 +24,9 @@ import maurizio.franco.demo.bean.User;
 import proxima.informatica.academy.seventh.service.SurveyRepliesService;
 
 /**
- * Root resource (exposed at "user" path)
+ * 
+ * @author Giammarco Lucchetti
+ *
  */
 @Path("surveyreplies")
 public class SurveyRepliesResource {

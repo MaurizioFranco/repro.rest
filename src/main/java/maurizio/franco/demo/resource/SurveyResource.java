@@ -21,6 +21,12 @@ import centauri.academy.proxima.cerepro.entity.EntityInterface;
 import centauri.academy.proxima.cerepro.entity.Surveys;
 import proxima.informatica.academy.seventh.service.SurveyService;
 
+/**
+ * 
+ * @author matteo.peruzza@gmail.com
+ *
+ */
+
 @Path("survey")
 public class SurveyResource {
 	
