@@ -64,10 +64,10 @@ public class QuestionResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Questions insertItem(Questions itemToInsert) {
-		boolean r = QuestionsService.getIstance().insert(itemToInsert);
-		if(r)
-			return itemToInsert;
-		return null;
+		logger.info("insert - START - object to insert: " + itemToInsert);
+		Questions question = QuestionsService.getIstance().insert(itemToInsert);
+		logger.info("insert - END: " + question);
+		return question;
 	}
 	
 	
@@ -75,10 +75,9 @@ public class QuestionResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Questions updateItem(Questions itemToUpdate) {
-		boolean r = QuestionsService.getIstance().updateQuestion(itemToUpdate);
-		if(r)
-			return itemToUpdate;
-		return null;
+		Questions r = null;
+		r = QuestionsService.getIstance().updateQuestion(itemToUpdate);
+		return r;
 	}
 	
 	
