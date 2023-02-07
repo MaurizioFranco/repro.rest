@@ -28,7 +28,7 @@ import proxima.informatica.academy.seventh.service.CandidateStatesService;
  * @author MarcoFabretti
  * 
  */
-@Path("candidateState")
+@Path("candidatestate")
 public class CandidateStatesResource {
 
 	private static Logger logger = LoggerFactory.getLogger(CandidateStatesResource.class);
