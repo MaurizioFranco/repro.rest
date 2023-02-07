@@ -16,8 +16,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import centauri.academy.proxima.cerepro.entity.EntityInterface;
+import centauri.academy.proxima.cerepro.entity.Roles;
 import centauri.academy.proxima.cerepro.entity.Candidates;
 import proxima.informatica.academy.seventh.service.CandidatesService;
+import proxima.informatica.academy.seventh.service.RoleService;
 
 
 /**
@@ -61,14 +63,24 @@ public class CandidatesResource {
 	}
 	
 	
+//	@POST
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Candidates insertItem(Candidates itemToInsert) {
+//		boolean bool = CandidatesService.getInstance().insertCandidates(itemToInsert);
+//		if(bool)
+//			return itemToInsert;
+//		return null;
+//	}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Candidates insertItem(Candidates itemToInsert) {
-		boolean bool = CandidatesService.getInstance().insertCandidates(itemToInsert);
-		if(bool)
-			return itemToInsert;
-		return null;
+	public Candidates insert(Candidates item) {
+		logger.info("insert - START - object to insert: " + item);
+		Candidates insertedItem = CandidatesService.getInstance().insert(item);
+		logger.info("insert - END - insertedItem: " + insertedItem);
+		return insertedItem ;
 	}
 	
 	
