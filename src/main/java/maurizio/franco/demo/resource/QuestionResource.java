@@ -83,7 +83,7 @@ public class QuestionResource {
 	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}/")
 	public boolean deleteItem(@PathParam("id") Long id) {
 		logger.info("deleteUser - START - id user to remove: " + id);
