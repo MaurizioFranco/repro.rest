@@ -68,7 +68,7 @@ public class SurveyRepliesResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public EntityInterface updateSurveyReplies(SurveysReplies surveyReplies) {
 		logger.info("updateSurveyReplies - START - object to update: " + surveyReplies);
-		SurveyRepliesService.getInstance().updateSurveyReplies(surveyReplies);
+		SurveyRepliesService.getInstance().update(surveyReplies);
 		return surveyReplies ;
 	}
 	
