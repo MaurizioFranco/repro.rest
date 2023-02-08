@@ -1,5 +1,7 @@
 package maurizio.franco.demo.resource;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -19,6 +21,7 @@ import centauri.academy.proxima.cerepro.entity.EntityInterface;
 import centauri.academy.proxima.cerepro.entity.Candidates;
 import centauri.academy.proxima.cerepro.entity.Candidates;
 import proxima.informatica.academy.seventh.service.CandidatesService;
+import proxima.informatica.academy.seventh.service.RoleService;
 import proxima.informatica.academy.seventh.service.CandidatesService;
 
 
@@ -78,6 +81,7 @@ public class CandidatesResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Candidates insert(Candidates item) {
 		logger.info("insert - START - object to insert: " + item);
+		item.setCandidacy_date_time(Timestamp.valueOf(LocalDateTime.now()));
 		Candidates insertedItem = CandidatesService.getInstance().insert(item);
 		logger.info("insert - END - insertedItem: " + insertedItem);
 		return insertedItem ;
@@ -104,12 +108,12 @@ public class CandidatesResource {
 	}
 	
 	@DELETE
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}/")
-	public boolean deleteItem(@PathParam("id") Long id) {
-		logger.info("deleteUser - START - id user to remove: " + id);
-		boolean bool = CandidatesService.getInstance().deleteById(id);
-		return bool;
+	public boolean delete(@PathParam("id") Long id) {
+		logger.info("delete - START - object id to delete: " + id);
+		boolean responseValue = CandidatesService.getInstance().deleteById(id);
+		logger.info("delete - END - responseValue: " + responseValue);
+		return responseValue ;
 	}
 }

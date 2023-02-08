@@ -43,6 +43,7 @@ public class SurveyRepliesResource {
 	public EntityInterface getItemById(@PathParam("id") long id) {
 		logger.info("getSurveyRepliesById - START - id: " + id);
 		EntityInterface item = SurveyRepliesService.getInstance().selectSurveyrepliesById(id);
+		logger.info("getSurveyRepliesById - END - itemID: " + item);
 		return item;
 	}
 	
@@ -74,6 +75,7 @@ public class SurveyRepliesResource {
 	public boolean deleteSurveyReplies(@PathParam("id") Long id) {
 		logger.info("deleteSurveyReplies - START - id user to remove: " + id);
 		boolean result = SurveyRepliesService.getInstance().deleteSurveyRepliesById(id);
+		logger.info("deleteSurveyReplies - END - id user remove: " + id);
 		return result;
 	}
 

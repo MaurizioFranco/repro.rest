@@ -3,6 +3,7 @@ package maurizio.franco.demo.resource;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -74,6 +75,16 @@ public class RoleResource {
 		Roles updatedItem = RoleService.getInstance().update(item);
 		logger.info("update - END - updatedItem: " + updatedItem);
 		return updatedItem ;
+	}
+	
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{id}/")
+	public boolean delete(@PathParam("id") Long id) {
+		logger.info("delete - START - object id to delete: " + id);
+		boolean responseValue = RoleService.getInstance().deleteById(id);
+		logger.info("delete - END - responseValue: " + responseValue);
+		return responseValue ;
 	}
 
 	
