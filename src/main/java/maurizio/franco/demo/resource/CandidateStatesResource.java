@@ -17,7 +17,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import centauri.academy.proxima.cerepro.entity.CandidateStates;
+import centauri.academy.proxima.cerepro.entity.EntityInterface;
+import centauri.academy.proxima.cerepro.entity.SurveysQuestions;
 import proxima.informatica.academy.seventh.service.CandidateStatesService;
+import proxima.informatica.academy.seventh.service.CandidatesService;
+import proxima.informatica.academy.seventh.service.SurveyquestionsService;
 
 
 /**
@@ -44,10 +48,9 @@ public class CandidateStatesResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}/")
-	public CandidateStates getObjectById(@PathParam("id") Long id) {
+	public EntityInterface getObjectById(@PathParam("id") Long id) {
 		logger.info("getObjectById - START - id: " + id);
-		CandidateStates testCandidateStates = new CandidateStates((long)10,(long)1, 4, "rgsgsr","rsgr","#ffffff");
-		return testCandidateStates;
+		return CandidateStatesService.getInstance().selectById(id);
 	}
 	/**
 	 * Method handling HTTP GET request for retrieve bean list. The returned object
@@ -59,14 +62,11 @@ public class CandidateStatesResource {
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<CandidateStates> getCandidateStates() {
-		logger.info("getCandidateStatess - START");
-		//TO DO: something from the persistence layer
-		List<CandidateStates> candidateStates = new ArrayList<CandidateStates>();
-		for (int i = 0; i < 10; i++) {
-			candidateStates.add(new CandidateStates((long) i, (long) i, i, "@a.it" , "afef" , "#ffff"));
-		}
-		return candidateStates;
+	public List<EntityInterface> getItems() {
+		logger.info("getCandidateStates - START");
+		List<EntityInterface> CandidateStates = CandidateStatesService.getInstance().selectAll();
+		logger.info("getCandidates - END");
+		return CandidateStates;
 	}
 
 	/**
@@ -84,11 +84,11 @@ public class CandidateStatesResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public CandidateStates insertCandidateStates(CandidateStates candidateStates) {
+	public CandidateStates insert(CandidateStates candidateStates) {
 		logger.info("insertCandidateStates - START - object to insert: " + candidateStates);
-		Boolean result = CandidateStatesService.getInstance().insert(candidateStates);
+		CandidateStates result = CandidateStatesService.getInstance().insert(candidateStates);
 		logger.info("insertCandidateStates - End - insert result: " + result);
-		return null;
+		return result;
 	}
 
 	/**
@@ -107,12 +107,10 @@ public class CandidateStatesResource {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public CandidateStates updateCandidateStates(CandidateStates candidateStates) {
-		logger.info("updateCandidateStates - START - object to update: " + candidateStates);
-		Boolean result = CandidateStatesService.getInstance().update(candidateStates);
-		logger.info("insertCandidateStates - End - update result: " + result);
-		
-		return candidateStates;
+	public CandidateStates updateItem(CandidateStates candidateStates) {
+		logger.info("CandidateStatesResource - updateItem - START - object to update: " + candidateStates);
+		CandidateStatesService.getInstance().update(candidateStates);
+		return candidateStates ;
 	}
 	
 	/**
