@@ -103,6 +103,7 @@ public class CandidatesResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Candidates updateItem(Candidates candidates) {
 		logger.info("CandidatesResource - updateItem - START - object to update: " + candidates);
+		candidates.setCandidacy_date_time(Timestamp.valueOf(LocalDateTime.now()));
 		CandidatesService.getInstance().update(candidates);
 		return candidates ;
 	}
